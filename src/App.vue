@@ -8,33 +8,112 @@ const questions = ref([
 	question: 'How was your weekend?',
 	answer: 0,
 	options: [
-		'Leave me alone!',
+		'It was amazing!!',
 		'Fine, Yours?',
-		'Same as always',
-		'It was amazing!!'
+		'Leave me alone!',
 	],
 	selected: null
   },
   {
-	question: 'I was talking to your friend yesterday, they said you are a?',
+	question: 'To prepare for a night out...',
 	answer: 2,
 	options: [
-		'who are we kidding, we didnt talk about you!',
-		'Viewing things',
-		'a mastermind?'
+		'I get all my friends together to plan where we will dance the night away.',
+		'Call a few of my closest friends to see if they will be there.',
+		'Prepare? My friends have to drag me out most nights.',
 	],
 	selected: null
   },
   {
-	question: 'What is Vue Router?',
+	question: 'Being around people makes me feel...',
 	answer: 1,
 	options: [
-		'An ice cream maker',
-		'A routing library for Vue',
-		'Burger sauce'
+		"Like I'm alive!",
+		"Inspired. I feed off of others' energy but there are times when I'd rather be alone.",
+		"A bit exhausted. Being around others can be draining.",
 	],
 	selected: null
-  }
+  },
+  {
+	question: "When given a choice between working as part of a team or working as a group, I would prefer to...",
+	answer: 1,
+	options: [
+	"Work with as many people as possible.",
+	"Work as part of a small group.",
+	"Work by myself.",
+	],
+	selected: null
+  },
+    {
+	question: "What's your idea of the perfect date?",
+	answer: 1,
+	options: [
+	"A live concert in Central Park.",
+	"Dinner and a Broadway show.",
+	"Wine and Netflix.",
+	],
+	selected: null
+  },
+    {
+	question: "During parties or social gatherings, I tend to...",
+	answer: 1,
+	options: [
+	"Talk to as many people as I can. I've been called a social butterfly.",
+	"Spend time with a few people that I know. It's about quality not quanitity.",
+	"Keep to myself. You can find me planted on the wall or by the punch bowl.",
+	],
+	selected: null
+  },
+    {
+	question: "When I'm dealing with a personal problem, I prefer to...",
+	answer: 1,
+	options: [
+	"Talk about it with others and enlist their help.",
+	"Call my closest friend and discuss on the phone.",
+	"Solve it on my own. I keep my private life private.",
+	],
+	selected: null
+  },
+  {
+	question: "On the topic of public speaking...",
+	answer: 1,
+	options: [
+	"I love it. All eyes on me!",
+	"It's not my strongest suit but I'll do it if I have to.",
+	"I get super nervous. I'd rather write 5 research papers.",
+	],
+	selected: null
+  },
+  {
+	question: "Do people describe you as thoughtful, reserved, and soft-spoken?",
+	answer: 1,
+	options: [
+	"Not a chance, I am a very talkative person.",
+	"Sometimes, but I can be quite talkative with my inner circle.",
+	"All the time, I am a very quiet and mellow person.",
+	],
+	selected: null
+  },
+  {
+	question: "Do you enjoy meeting new people?",
+	answer: 1,
+	options: [
+	"Yes, I make a new friend every time I go grocery shopping.",
+	"Sometimes, but I have to be in the right mood.",
+	"I rarely find myself in position to meet anyone new.",
+	],
+	selected: null
+  },
+  {
+	question: "How do you prefer to communicate?",
+	answer: 1,
+	options: [
+	"In person. Whatever you have to say, say it to my face.",
+	"It depends on the situation but I can be flexible.",
+	"Just text me please!",
+	],
+	selected: null
+  },
 ])
 
 const quizCompleted = ref(false)
@@ -69,7 +148,7 @@ const NextQuestion = () => {
 	}
 	
 	quizCompleted.value = true
-	ws.send(JSON.stringify({ 'Score': score.value / 9 }));
+	ws.send(JSON.stringify({ 'Score': score.value / 22 }));
 }
 
 ws.addEventListener('open', (event) => {
