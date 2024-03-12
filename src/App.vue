@@ -189,6 +189,22 @@ ws.addEventListener('close', (event) => {
 
 
 
+const textInput = ref('');
+
+const sendMessage = () => {
+	const message = textInput.value.trim();
+	if (message !== '') {
+		// window.location.reload();
+		ws.send(JSON.stringify({ 'Name': message }))
+  };
+}
+
+
+
+
+
+
+
 </script>
 
 <template>
@@ -244,6 +260,8 @@ ws.addEventListener('close', (event) => {
 
 		<section v-else>
 			<h2>Manifestation in process</h2>
+    		<input type="text" :value="textInput" @input="textInput = $event.target.value" placeholder="Give it a name...">
+			<button @click="sendMessage">Send</button>
 		<!-- <p>Your score is {{ score }}/{{ questions.length }}</p> -->
 		</section>
    
@@ -337,6 +355,18 @@ h1 {
 	display: none;
 }
 
+.custom-input {
+  padding: 1rem;
+  border: 0.2rem solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
 button {
 	appearance: none;
 	outline: none;
@@ -353,6 +383,17 @@ button {
 
 button:disabled {
 	opacity: 0.5;
+}
+
+input[type="text"]{
+  color: #FFF;
+  width: 100%;
+  height: 20%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  outline:none;
+  padding: 1rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
 h2 {
