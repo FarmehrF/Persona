@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-let ws = new WebSocket('ws://localhost:5001');
+let ws = new WebSocket('wss://websocketserver-0d0561efc4b0.herokuapp.com:443');
 
 const questions = ref([
   {
