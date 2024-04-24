@@ -5,116 +5,117 @@ let ws = new WebSocket('wss://websocketserver-0d0561efc4b0.herokuapp.com:443');
 
 const questions = ref([
   {
-	question: 'How was your weekend?',
-	answer: 0,
-	options: [
-		'It was amazing!!',
-		'Fine, Yours?',
-		'Leave me alone!',
-	],
-	selected: null
+    question: 'How do you typically feel about recent events?',
+    answer: 0,
+    options: [
+      'Really positive!',
+      'Neutral.',
+      'Prefer solitude to reflect.'
+    ],
+    selected: null
   },
   {
-	question: 'To prepare for a night out...',
-	answer: 2,
-	options: [
-		'I get all my friends together to plan where we will dance the night away.',
-		'Call a few of my closest friends to see if they will be there.',
-		'Prepare? My friends have to drag me out most nights.',
-	],
-	selected: null
+    question: 'How do you approach preparing for new experiences?',
+    answer: 0,
+    options: [
+      'Collaborate with others for planning.',
+      'Seek input from close contacts.',
+      'Embrace spontaneity or reluctance to plan.'
+    ],
+    selected: null
   },
   {
-	question: 'Being around people makes me feel...',
-	answer: 1,
-	options: [
-		"Like I'm alive!",
-		"Inspired. I feed off of others' energy but there are times when I'd rather be alone.",
-		"A bit exhausted. Being around others can be draining.",
-	],
-	selected: null
+    question: 'How do social interactions impact your mood?',
+    answer: 0,
+    options: [
+      'Energizing and uplifting.',
+      'Inspiring but occasionally overwhelming.',
+      'Draining, prompting a need for solitude.'
+    ],
+    selected: null
   },
   {
-	question: "When given a choice between working as part of a team or working as a group, I would prefer to...",
-	answer: 1,
-	options: [
-	"Work with as many people as possible.",
-	"Work as part of a small group.",
-	"Work by myself.",
-	],
-	selected: null
-  },
-    {
-	question: "What's your idea of the perfect date?",
-	answer: 1,
-	options: [
-	"A live concert in Central Park.",
-	"Dinner and a Broadway show.",
-	"Wine and Netflix.",
-	],
-	selected: null
-  },
-    {
-	question: "During parties or social gatherings, I tend to...",
-	answer: 1,
-	options: [
-	"Talk to as many people as I can. I've been called a social butterfly.",
-	"Spend time with a few people that I know. It's about quality not quanitity.",
-	"Keep to myself. You can find me planted on the wall or by the punch bowl.",
-	],
-	selected: null
-  },
-    {
-	question: "When I'm dealing with a personal problem, I prefer to...",
-	answer: 1,
-	options: [
-	"Talk about it with others and enlist their help.",
-	"Call my closest friend and discuss on the phone.",
-	"Solve it on my own. I keep my private life private.",
-	],
-	selected: null
+    question: 'What\'s your preference in collaborative settings?',
+    answer: 0,
+    options: [
+      'Enjoy working with large, diverse teams.',
+      'Prefer smaller, more intimate groups.',
+      'Prefer individual work.'
+    ],
+    selected: null
   },
   {
-	question: "On the topic of public speaking...",
-	answer: 1,
-	options: [
-	"I love it. All eyes on me!",
-	"It's not my strongest suit but I'll do it if I have to.",
-	"I get super nervous. I'd rather write 5 research papers.",
-	],
-	selected: null
+    question: 'Describe your ideal outing:',
+    answer: 0,
+    options: [
+      'Vibrant and communal.',
+      'Culturally enriching and intimate.',
+      'Quiet and private.'
+    ],
+    selected: null
   },
   {
-	question: "Do people describe you as thoughtful, reserved, and soft-spoken?",
-	answer: 1,
-	options: [
-	"Not a chance, I am a very talkative person.",
-	"Sometimes, but I can be quite talkative with my inner circle.",
-	"All the time, I am a very quiet and mellow person.",
-	],
-	selected: null
+    question: 'How do you typically behave in social gatherings?',
+    answer: 0,
+    options: [
+      'Sociable, engaging with many.',
+      'Selective, focusing on quality interactions.',
+      'Observant, keeping to oneself.'
+    ],
+    selected: null
   },
   {
-	question: "Do you enjoy meeting new people?",
-	answer: 1,
-	options: [
-	"Yes, I make a new friend every time I go grocery shopping.",
-	"Sometimes, but I have to be in the right mood.",
-	"I rarely find myself in position to meet anyone new.",
-	],
-	selected: null
+    question: 'How do you address personal challenges?',
+    answer: 0,
+    options: [
+      'Seek support and collaboration.',
+      'Rely on trusted confidants.',
+      'Prefer to solve problems independently.'
+    ],
+    selected: null
   },
   {
-	question: "How do you prefer to communicate?",
-	answer: 1,
-	options: [
-	"In person. Whatever you have to say, say it to my face.",
-	"It depends on the situation but I can be flexible.",
-	"Just text me please!",
-	],
-	selected: null
+    question: 'Thoughts on public speaking?',
+    answer: 0,
+    options: [
+      'Enjoy the attention and engagement.',
+      'Willing to do it if necessary.',
+      'Feel nervous and uncomfortable.'
+    ],
+    selected: null
   },
-])
+  {
+    question: 'How do others perceive your social demeanor?',
+    answer: 0,
+    options: [
+      'Outgoing and expressive.',
+      'Balanced between outgoing and reserved.',
+      'Reserved and contemplative.'
+    ],
+    selected: null
+  },
+  {
+    question: 'Do you enjoy meeting new people?',
+    answer: 0,
+    options: [
+      'Embrace new connections eagerly.',
+      'Open to new interactions depending on circumstance.',
+      'Prefer familiarity over new acquaintances.'
+    ],
+    selected: null
+  },
+  {
+    question: 'Preferred communication style:',
+    answer: 0,
+    options: [
+      'Value face-to-face interactions.',
+      'Adapt communication as needed.',
+      'Prefer written communication for convenience.'
+    ],
+    selected: null
+  }
+]);
+
 
 const quizCompleted = ref(false)
 const currentQuestion = ref(0)
@@ -238,7 +239,6 @@ const sendMessage = () => {
 						:name="getCurrentQuestion.index" 
 						:value="index" 
 						v-model="getCurrentQuestion.selected" 
-						:disabled="getCurrentQuestion.selected"
 						@change="SetAnswer" 
 					/>
 					<span>{{ option }}</span>
